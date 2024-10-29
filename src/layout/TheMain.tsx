@@ -7,35 +7,41 @@ import useLocalStorage from '#composables/useLocalStorage';
 const TheMain = () => {
   const [todos, setTodos] = useState<Todo[]>([]);
   const [getItem, setItem] = useLocalStorage<Todo[]>();
+  const [loaded, setLoaded] = useState(false);
+
+  // besoin du loaded car todos, lors de sa création avec le useState, appelle le useEffet
 
   useEffect(() => {
     const item = getItem();
+    console.log('🚀 ~ useEffect ~ get todos:', item);
     if (item) {
       setTodos(item);
     }
+    setLoaded(true);
   }, []);
 
+  useEffect(() => {
+    console.log('🚀 ~ useEffect ~ save todos:', loaded);
+    if (loaded) setItem(todos);
+  }, [todos]);
+
   const handleAddTodo = (todo: Todo) => {
-    const udpatedTodos = [...todos, todo];
-    setTodos(udpatedTodos);
-    setItem(udpatedTodos);
+    setTodos([...todos, todo]);
   };
 
   const handleCompleteTodo = (id: string) => {
-    const updatedTodos = todos.map((todo) => {
-      if (todo.id === id) {
-        return { ...todo, isCompleted: !todo.isCompleted };
-      }
-      return todo;
-    });
-    setTodos(updatedTodos);
-    setItem(updatedTodos);
+    setTodos(
+      todos.map((todo) => {
+        if (todo.id === id) {
+          return { ...todo, isCompleted: !todo.isCompleted };
+        }
+        return todo;
+      })
+    );
   };
 
   const handleDeleteTodo = (id: string) => {
-    const updatedTodos = todos.filter((todo) => todo.id !== id);
-    setTodos(updatedTodos);
-    setItem(updatedTodos);
+    setTodos(todos.filter((todo) => todo.id !== id));
   };
 
   return (
