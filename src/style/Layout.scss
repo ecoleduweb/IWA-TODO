@@ -1,0 +1,21 @@
+header,
+footer {
+  padding: 10px 40px;
+  background-color: black;
+  color: white;
+  max-height: 500px;
+  overflow-y: auto;
+  label {
+    padding: 0;
+    text-align: left;
+    font-size: 1em;
+    font-family: 'arial';
+  }
+}
+
+main {
+  width: 800px;
+  margin: 0 auto;
+  flex: 1;
+}
+

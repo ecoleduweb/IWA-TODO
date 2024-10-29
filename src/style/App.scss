@@ -1,0 +1,42 @@
+.flex {
+  display: flex;
+
+  &-between {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &-column {
+    flex-direction: column;
+  }
+}
+
+/* Variables CSS pour personnaliser les couleurs et les polices */
+:root {
+  --stm-primary-color: #003399; /* Bleu STM */
+  --stm-secondary-color: #cccccc; /* Gris clair */
+  --stm-font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+/* Styles généraux */
+body {
+  font-family: var(--stm-font-family);
+  margin: 0;
+  padding: 20px;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 0;
+}
+
+.fill-height {
+  min-height: 100vh;
+}
+
+body,
+a {
+  font-family: 'Arial', sans-serif;
+}
