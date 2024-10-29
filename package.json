@@ -16,8 +16,8 @@
     "sass": "^1.77.8"
   },
   "devDependencies": {
-    "@playwright/test": "^1.48.2",
     "@eslint/js": "^9.8.0",
+    "@playwright/test": "^1.48.2",
     "@types/node": "^22.5.4",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
@@ -26,10 +26,10 @@
     "eslint-plugin-react-hooks": "^5.1.0-rc.0",
     "eslint-plugin-react-refresh": "^0.4.9",
     "globals": "^15.9.0",
+    "playwright": "^1.48.2",
     "prettier": "^3.3.3",
     "typescript": "^5.5.3",
     "typescript-eslint": "^8.0.0",
     "vite": "^5.4.3"
   }
 }
-
