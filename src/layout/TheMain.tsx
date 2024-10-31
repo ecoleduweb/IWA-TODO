@@ -1,20 +1,30 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Todo from '#types/Todo';
 import ATodo from '#components/ATodo';
 import TheAddTodo from '#components/TheAddTodo';
-
+import useTodo from '../composables/useTodo';
 const TheMain = () => {
   const [todos, setTodos] = useState<Todo[]>([]);
+  const { deleteTodo, getTodos, patchTodo, postTodo } = useTodo();
 
-  const handleAddTodo = (todo: Todo) => {
-    setTodos([...todos, todo]);
+  useEffect(() => {
+    getTodos(setTodos);
+  }, []);
+
+  const handleAddTodo = async (todo: Todo) => {
+    const newTodo = await postTodo(todo);
+    if (newTodo) {
+      setTodos([...todos, newTodo]);
+    }
   };
 
   const handleCompleteTodo = (id: string) => {
     setTodos(
       todos.map((todo) => {
         if (todo.id === id) {
-          return { ...todo, isCompleted: !todo.isCompleted };
+          const updatedTodo = { ...todo, isCompleted: !todo.isCompleted };
+          patchTodo(updatedTodo);
+          return updatedTodo;
         }
         return todo;
       })
@@ -23,6 +33,7 @@ const TheMain = () => {
 
   const handleDeleteTodo = (id: string) => {
     setTodos(todos.filter((todo) => todo.id !== id));
+    deleteTodo(id);
   };
 
   return (
