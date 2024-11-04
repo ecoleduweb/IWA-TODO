@@ -4,41 +4,12 @@ import ATodo from '#components/ATodo';
 import TheAddTodo from '#components/TheAddTodo';
 
 const TheMain = () => {
-  const [todos, setTodos] = useState<Todo[]>([]);
-
-  const handleAddTodo = (todo: Todo) => {
-    setTodos([...todos, todo]);
-  };
-
-  const handleCompleteTodo = (id: string) => {
-    setTodos(
-      todos.map((todo) => {
-        if (todo.id === id) {
-          return { ...todo, isCompleted: !todo.isCompleted };
-        }
-        return todo;
-      })
-    );
-  };
-
-  const handleDeleteTodo = (id: string) => {
-    setTodos(todos.filter((todo) => todo.id !== id));
-  };
-
   return (
     <main className="wrapper">
       <h1>Ta liste de choses à faire</h1>
-      <TheAddTodo onAddTodo={handleAddTodo} />
-      <div className="todo-list">
-        {todos.map((todo) => (
-          <ATodo
-            key={todo.id}
-            todo={todo}
-            onComplete={handleCompleteTodo}
-            onDelete={handleDeleteTodo}
-          />
-        ))}
-      </div>
+      <p>Ajoute tes affaires ici pour faire fonctionner les todos.</p>
+      <p>J'ai mis des tests playwrights à utiliser pour savoir si ça fonctione!</p>
+      <p>Tu as 50 minutes. Bonne chance!</p>
     </main>
   );
 };
