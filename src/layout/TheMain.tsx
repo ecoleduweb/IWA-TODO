@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import Todo from '#types/Todo';
 import ATodo from '#components/ATodo';
 import TheAddTodo from '#components/TheAddTodo';
-import useTodo from '../composables/useTodo';
+import useTodo from '../composables/useTodoService';
 const TheMain = () => {
   const [todos, setTodos] = useState<Todo[]>([]);
   const { deleteTodo, getTodos, patchTodo, postTodo } = useTodo();
