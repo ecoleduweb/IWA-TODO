@@ -5,7 +5,7 @@ const useLocalStorage = <T>() => {
     return item ? JSON.parse(item) : null;
   };
 
-  const setItem = (value: T): void => {
+  const setItem = (value: T[]): void => {
     localStorage.setItem(key, JSON.stringify(value));
   };
 
