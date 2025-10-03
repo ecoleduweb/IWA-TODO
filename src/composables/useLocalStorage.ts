@@ -1,5 +1,4 @@
-const key = 'todos';
-const useLocalStorage = <T>() => {
+const useLocalStorage = <T>(key: string) => {
   const getItem = (): T | null => {
     const item = localStorage.getItem(key);
     return item ? JSON.parse(item) : null;
@@ -13,7 +12,7 @@ const useLocalStorage = <T>() => {
     localStorage.removeItem(key);
   };
 
-  return [getItem, setItem, removeItem];
+  return { getItem, setItem, removeItem };
 };
 
 export default useLocalStorage;

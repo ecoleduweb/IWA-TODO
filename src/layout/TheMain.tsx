@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Todo from '#types/Todo';
 import ATodo from '#components/ATodo';
 import TheAddTodo from '#components/TheAddTodo';
@@ -25,6 +25,10 @@ const TheMain = () => {
     setTodos(todos.filter((todo) => todo.id !== id));
   };
 
+  useEffect(() => {
+    console.log('On dirait que le composant vient de recharger!');
+  }, [todos]);
+
   return (
     <main className="wrapper">
       <h1>Ta liste de choses à faire</h1>
@@ -44,4 +48,3 @@ const TheMain = () => {
 };
 
 export default TheMain;
-
