@@ -52,8 +52,8 @@ import useFetch from '#composables/useFetch';
 const { getItem, setItem } = useLocalStorage<Todo[]>('todos');
 
 //3. utiliser les fonctions au bon endroit!
-const todosFromLocalStorage = getItem('todos');
-setTodos(todosFromLocalStorage);
+const todosFromLocalStorage = getItem();
+setTodos([]/*ton tableau de todos à jour*/);
 ```
 
 ## Le site branché à l'API
